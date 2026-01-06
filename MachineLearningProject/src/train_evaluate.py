@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.metrics import classification_report, roc_auc_score, confusion_matrix, accuracy_score, f1_score
 from sklearn.model_selection import cross_val_score
 
-from src.models import get_models, preprocess
+from MachineLearningProject.src.models import get_models, preprocess
 
 
 def train_and_evaluate(X_train, y_train, X_val, y_val, X_test, y_test):

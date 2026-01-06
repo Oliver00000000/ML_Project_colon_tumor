@@ -2,7 +2,7 @@ import numpy as np
 from skimage.feature import graycomatrix, graycoprops, local_binary_pattern
 from skimage.filters import sobel
 
-from src.preprocess import crop_center_roi_grayscale
+from MachineLearningProject.src.preprocess import crop_center_roi_grayscale
 
 
 def extract_glcm(gray_img, config):

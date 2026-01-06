@@ -1,6 +1,6 @@
 data:
-  lc25000_path: "C:/Users/Oliver/Masters_thesis/datasets/LC25000"
-  crchgd_path: "C:/Users/Oliver/Masters_thesis/datasets"
+  lc25000_path: "datasets/LC25000"
+  crchgd_path: "datasets"
 
 features:
   glcm_levels: 32

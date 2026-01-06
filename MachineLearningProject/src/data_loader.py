@@ -6,7 +6,7 @@ from PIL import Image
 from glob import glob
 from sklearn.model_selection import train_test_split
 
-from src.texture_features import extract_all_features
+from MachineLearningProject.src.texture_features import extract_all_features
 
 
 def load_config(config_path='config.yaml'):
@@ -15,7 +15,7 @@ def load_config(config_path='config.yaml'):
 
 
 def load_lc25000_features(feature_extractor, data_path, config):
-    base = r'C:/Users/Oliver/Masters_thesis/datasets/LC25000/lung_colon_image_set/colon_image_sets'
+    base = r'datasets/LC25000/lung_colon_image_set/colon_image_sets'
 
     tumor_paths = sorted(glob(os.path.join(base, 'colon_aca/*.jp*g')))
     healthy_paths = sorted(glob(os.path.join(base, 'colon_n/*.jp*g')))
