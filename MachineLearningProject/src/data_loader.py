@@ -25,7 +25,7 @@ def load_lc25000_features(feature_extractor, data_path, config):
     healthy_sample = list(healthy_paths[:2500]) + list(np.random.choice(healthy_paths, 2500, replace=False))
     for i, path in enumerate(healthy_sample[:5000]):
         img = np.array(Image.open(path).convert('RGB'))
-        feats = feature_extractor(img)  # ROI auto-handled
+        feats = feature_extractor(img)
         X.append(feats);
         y.append(0)
         if i % 1000 == 0: print(f"  Healthy: {i}/5000")
@@ -43,7 +43,7 @@ def load_lc25000_features(feature_extractor, data_path, config):
 
 
 def load_crchgd_features(feature_extractor, data_path):
-    base = os.path.join(data_path, "Graded colon tissue")  # Your root dataset
+    base = os.path.join(data_path, "Graded colon tissue")
     tumor_paths = []
     grade_patterns = ['CRC_Grade__1__Well_Diff/20x', 'CRC_Grade__2__Mod_Diff/20x', 'CRC_Grade__3__Poorly_Diff/20x']
 
