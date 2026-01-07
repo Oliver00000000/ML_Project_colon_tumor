@@ -38,7 +38,7 @@ def load_lc25000_features(feature_extractor, data_path, config):
         if i % 1000 == 0: print(f"  Tumor: {i}/5000")
 
     X, y = np.array(X), np.array(y)
-    print(f"✅ LC25000 Final: X.shape={X.shape}, y={np.bincount(y)}")
+    print(f"LC25000 Final: X.shape={X.shape}, y={np.bincount(y)}")
     return X, y
 
 
@@ -51,7 +51,7 @@ def load_crchgd_features(feature_extractor, data_path):
         grade_path = os.path.join(base, grade_pat)
         found = sorted(glob(os.path.join(grade_path, '*.jp*g')))
         tumor_paths.extend(found)
-        print(f"  📁 {grade_pat}: {len(found)} images")
+        print(f"{grade_pat}: {len(found)} images")
 
     healthy_path = os.path.join(base, 'Normal_Colon/20x')
     healthy_paths = sorted(glob(os.path.join(healthy_path, '*.jp*g')))
@@ -95,7 +95,7 @@ def load_crchgd_balanced(feature_extractor, data_path, config):
         tumor_paths.extend(found)
         print(f"   {grade_pat}: {len(found)} images")
 
-    print(f"✅ Total tumor images: {len(tumor_paths)}")
+    print(f"Total tumor images: {len(tumor_paths)}")
 
     X_tumor, y_tumor = [], []
     for i, path in enumerate(tumor_paths):
@@ -129,7 +129,7 @@ def load_crchgd_balanced(feature_extractor, data_path, config):
     X_balanced = np.vstack([X_tumor, X_healthy_orig, X_aug])
     y_balanced = np.concatenate([y_tumor, y_healthy_orig, y_aug])
 
-    print(f"✅ Balanced dataset ready!")
+    print(f"   Balanced dataset ready!")
     print(f"   Total samples: {len(X_balanced)}")
     print(f"   Tumor: {np.sum(y_balanced == 1)}")
     print(f"   Healthy (original + augmented): {np.sum(y_balanced == 0)}")
@@ -181,7 +181,7 @@ def augment_healthy(healthy_paths, target_n=560, config=None):
     X_aug = np.array(X_aug)
     y_aug = np.array(y_aug)
 
-    print(f"✅ Augmentation complete: {X_aug.shape[0]} samples generated")
+    print(f"   Augmentation complete: {X_aug.shape[0]} samples generated")
     print(f"   X_aug shape: {X_aug.shape} (samples, features)")
     print(f"   y_aug shape: {y_aug.shape}")
     print(f"   Feature vector: L2-normalized 139D (GLCM+LBP+GLRLM)")
@@ -197,5 +197,5 @@ def get_splits(X, y, config):
         X_temp, y_temp, test_size=0.5,
         random_state=config['train']['random_state'], stratify=y_temp)
 
-    print(f"✅ Splits - Train:{X_train.shape[0]}, Val:{X_val.shape[0]}, Test:{X_test.shape[0]}")
+    print(f"Splits - Train:{X_train.shape[0]}, Val:{X_val.shape[0]}, Test:{X_test.shape[0]}")
     return (X_train, y_train), (X_val, y_val), (X_test, y_test)
